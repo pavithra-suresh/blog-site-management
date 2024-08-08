@@ -7,10 +7,10 @@ import com.blog.site.model.Blog;
 
 public interface IUserService {
 
-	List<Blog> getBlogsByUser(String user);
+	List<Blog> getBlogsByUser(String userName);
 
-	boolean deleteBlog(String blogname);
+	boolean deleteBlog(String blogName, String userName);
 
-	Blog addBlog(Blog blog, String blogname);
+	Blog addBlog(Blog blog);
 
 }

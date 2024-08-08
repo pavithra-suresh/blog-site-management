@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.blog.site.util.WordCount;
@@ -18,6 +19,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Blog {
+	
+	@Id
+	private String blogId;
 	
 	@NotEmpty(message = "Blog name should not be empty")
 	@Size(min = 20, message = "Blog Name should be of minimum 20 characters")

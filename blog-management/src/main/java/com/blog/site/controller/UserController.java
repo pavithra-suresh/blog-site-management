@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -36,18 +37,19 @@ public class UserController {
 	 * Deletes a blog
 	 */
 	@DeleteMapping("/delete/{blogname}")
-	public boolean deleteBlog(@RequestParam String blogname) {
-		logger.info("Request received to delete a blog : {}", blogname);
-		return userService.deleteBlog(blogname);
+	public boolean deleteBlog(@RequestParam String blogName,
+			@RequestHeader (name = "user-name", required = true) String userName) {
+		logger.info("Request received to delete a blog : {}", blogName);
+		return userService.deleteBlog(blogName, userName);
 	}
 	
 	/**
 	 * Add new blog to the system
 	 */
-	@PostMapping("/blogs/add/{blogname}")
+	@PostMapping("/blogs/add")
 	public Blog addBlog(@RequestBody Blog blog, @RequestParam String blogname) {
 		logger.info("Request received to add new blog : {} with name : {}", blog, blogname);
-		return userService.addBlog(blog, blogname);
+		return userService.addBlog(blog);
 	}
 	
 }
