@@ -7,11 +7,13 @@ import java.util.stream.Collectors;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.blog.site.model.Blog;
 import com.blog.site.model.BlogResponse;
 import com.blog.site.repo.BlogRepository;
 
+@Service
 public class BlogService implements IBlogService {
 	
 	private Logger logger = LogManager.getLogger(BlogService.class);
